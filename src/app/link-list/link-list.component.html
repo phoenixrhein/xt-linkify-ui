@@ -1,0 +1,22 @@
+<!--<div class="row">
+    <ul>
+        <li *ngFor="let link of links">
+            <span>{{link.link}}</span> - <small>{{link.link}}</small>
+        </li>
+    </ul>
+</div>-->
+<div class="card card-nav-tabs text-center" *ngFor="let link of links$ | async">
+    <div class="card-header card-header-primary">
+        <button class="btn btn-primary btn-fab btn-icon btn-round" [class.btn-outline-primary]="link.favorite === 1">
+            <i class="fa fa-heart"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <p class="card-text"><a href="#" class="card-link">{{link.link}}</a></p>
+        <a *ngIf="link.read === 0" href="#" class="btn btn-primary btn-link">als gelesen markieren</a>
+        <p *ngIf="link.read === 1" class="card-text"><i class="nc-icon nc-check-2"></i> gelesen</p>
+    </div>
+    <div class="card-footer text-muted">
+        hinzugefügt am {{link.createdDate}}
+    </div>
+</div>

@@ -10,7 +10,7 @@ export class LinkListService {
     constructor(private http: HttpClient) { }
 
     getLinks(): Observable<any> {
-        const url = 'http://linkify-service.local/links';
+        const url = 'http://linkify.local/api/public/links';
         return this.http.get(url);
     }
 

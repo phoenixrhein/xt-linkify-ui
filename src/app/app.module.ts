@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AddLinkComponent } from './add-link/add-link.component';
@@ -36,7 +37,7 @@ const appRoutes: Routes = [
         HomeComponent,
         LinkListComponent
     ],
-    providers: [],
+    providers: [DatePipe],
     bootstrap: [
         AppComponent
     ]

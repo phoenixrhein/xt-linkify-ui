@@ -2,39 +2,38 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Component({
-  selector: 'app-add-link',
-  templateUrl: './add-link.component.html',
-  styleUrls: ['./add-link.component.css']
+    selector: 'app-add-link',
+    templateUrl: './add-link.component.html',
+    styleUrls: ['./add-link.component.css']
 })
 export class AddLinkComponent implements OnInit {
-    
-  link = '';
 
-  constructor(private http: HttpClient) { }
-  
-  addLink(): void {
-    const url = 'http://localhost/angular-dummy-backend-server/add.php';
+    link = '';
 
-    const headers = new HttpHeaders()
-        .set('Accept', 'application/json');
+    constructor(private http: HttpClient) { }
 
-    const params = new HttpParams()
-        .set('link', this.link);
+    addLink(): void {
+        const url = 'http://linkify.local/api/public/link';
 
-    this.http.get<any>(url, { headers, params }).subscribe({
-        /*
-        next: (flights) => {
-            console.log(flights);
-        },
-        */
-        error: (err) => {
-            console.log('Error', err);
-        }
-    });
-     
-  }
+        const headers = new HttpHeaders()
+            .set('Accept', 'application/json');
 
-  ngOnInit(): void {
-  }
+        var params = { link: this.link };
+
+        this.http.post<any>(url, params, { headers }).subscribe({
+            /*
+            next: (flights) => {
+                console.log(flights);
+            },
+            */
+            error: (err) => {
+                console.log('Error', err);
+            }
+        });
+
+    }
+
+    ngOnInit(): void {
+    }
 
 }

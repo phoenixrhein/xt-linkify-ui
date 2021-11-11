@@ -31,7 +31,7 @@ export class LinkListComponent implements OnInit {
         this.links$ = linkListService.getLinks();
     }
 
-    markAsRead(id: number): boolean {
+    markAsRead(id: number, event: any): boolean {
         const url = 'http://linkify.local/api/public/link-read/' + id;
 
         const headers = new HttpHeaders()
@@ -47,6 +47,8 @@ export class LinkListComponent implements OnInit {
                 console.log('Error', err);
             }
         });
+        event.srcElement.classList.remove("isRead");
+        event.srcElement.classList.add("isRead");
         return true;
     }
 

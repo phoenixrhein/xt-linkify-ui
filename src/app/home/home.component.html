@@ -1,2 +1,2 @@
-<app-add-link></app-add-link>
-<app-link-list></app-link-list>
+<app-add-link (myEvent)="linkList.reload()"></app-add-link>
+<app-link-list #linkList></app-link-list>

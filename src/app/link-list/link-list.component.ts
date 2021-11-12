@@ -51,6 +51,10 @@ export class LinkListComponent implements OnInit {
         event.srcElement.classList.add("isRead");
         return true;
     }
+    
+    reload(): void {
+        this.links$ = this.linkListService.getLinks();
+    }
 
     ngOnInit(): void {
     }

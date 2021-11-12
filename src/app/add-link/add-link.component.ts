@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Component({
@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
     styleUrls: ['./add-link.component.css']
 })
 export class AddLinkComponent implements OnInit {
-
+    @Output() myEvent = new EventEmitter();
     link = '';
 
     constructor(private http: HttpClient) { }
@@ -28,9 +28,13 @@ export class AddLinkComponent implements OnInit {
             */
             error: (err) => {
                 console.log('Error', err);
+            },
+            complete: () => { 
+                this.link = '';
+                this.myEvent.emit(null)
+                
             }
         });
-
     }
 
     ngOnInit(): void {

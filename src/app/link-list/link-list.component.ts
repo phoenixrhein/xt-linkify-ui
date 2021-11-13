@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { LinkListService } from '../core/services/link-list.service';
 import { DatePipe } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
     selector: 'app-link-list',
@@ -32,7 +33,7 @@ export class LinkListComponent implements OnInit {
     }
 
     markAsRead(id: number, event: any): boolean {
-        const url = 'http://linkify.local/api/public/link-read/' + id;
+        const url = environment.apiPath + '/link-read/' + id;
 
         const headers = new HttpHeaders()
             .set('Accept', 'application/json');

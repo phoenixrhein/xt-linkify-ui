@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
     selector: 'app-add-link',
@@ -13,7 +14,7 @@ export class AddLinkComponent implements OnInit {
     constructor(private http: HttpClient) { }
 
     addLink(): void {
-        const url = 'http://linkify.local/api/public/link';
+        const url = environment.apiPath + '/link';
 
         const headers = new HttpHeaders()
             .set('Accept', 'application/json');

@@ -1,40 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
-  selector: 'app-add-link',
-  templateUrl: './add-link.component.html',
-  styleUrls: ['./add-link.component.css']
+    selector: 'app-add-link',
+    templateUrl: './add-link.component.html',
+    styleUrls: ['./add-link.component.css']
 })
 export class AddLinkComponent implements OnInit {
-    
-  link = '';
+    @Output() myEvent = new EventEmitter();
+    link = '';
 
-  constructor(private http: HttpClient) { }
-  
-  addLink(): void {
-    const url = 'http://localhost/angular-dummy-backend-server/add.php';
+    constructor(private http: HttpClient) { }
 
-    const headers = new HttpHeaders()
-        .set('Accept', 'application/json');
+    addLink(): void {
+        const url = environment.apiPath + '/link';
 
-    const params = new HttpParams()
-        .set('link', this.link);
+        const headers = new HttpHeaders()
+            .set('Accept', 'application/json');
 
-    this.http.get<any>(url, { headers, params }).subscribe({
-        /*
-        next: (flights) => {
-            console.log(flights);
-        },
-        */
-        error: (err) => {
-            console.log('Error', err);
-        }
-    });
-     
-  }
+        var params = { link: this.link };
 
-  ngOnInit(): void {
-  }
+        this.http.post<any>(url, params, { headers }).subscribe({
+            error: (err) => {
+                console.log('Error', err);
+            },
+            complete: () => {
+                this.link = '';
+                this.myEvent.emit(null)
+
+            }
+        });
+    }
+
+    ngOnInit(): void {
+    }
 
 }

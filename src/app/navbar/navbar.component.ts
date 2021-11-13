@@ -7,13 +7,13 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
     templateUrl: 'navbar.component.html'
 })
 export class NavbarComponent {
-    
+
     sidebarVisible: boolean = false;
 
-    sidebarToggle(){
+    sidebarToggle() {
         var body = document.getElementsByTagName('body')[0];
 
-        if(this.sidebarVisible == false){
+        if (this.sidebarVisible == false) {
             body.classList.add('nav-open');
             this.sidebarVisible = true;
         } else {

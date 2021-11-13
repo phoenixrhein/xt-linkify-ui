@@ -5,10 +5,9 @@ import { ImpressumComponent } from './impressum/impressum.component';
 
 const routes: Routes =
     [
-        { path: 'home', component: HomeComponent },
+        { path: '', component: HomeComponent },
         { path: 'impressum', component: ImpressumComponent },
-        { path: '', redirectTo: '/home', pathMatch: 'full' },
-        { path: '**', redirectTo: '/home', pathMatch: 'full' }
+        { path: 'home', redirectTo: '/', pathMatch: 'full' }
     ];
 
 @NgModule({

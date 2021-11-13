@@ -11,21 +11,7 @@ import { environment } from '../../environments/environment';
     styleUrls: ['./link-list.component.css']
 })
 export class LinkListComponent implements OnInit {
-    /* 
-   links = [{
-       id: 1,
-       link: "https://www.msv-moers.de/news-verein/bilder-vom-umbau-des-rheinpreussenstadions.html",
-       createdDate: '14.07.2021',
-       read: 1,
-       favorite: 1
-   }, {
-       id: 1,
-       link: "https://www.msv-moers.de/news-verein/bilder-vom-umbau-des-rheinpreussenstadions.html",
-       createdDate: '14.07.2021',
-       read: 0,
-       favorite: 0
-   }];
- */
+
     links$: Observable<any>;
 
     constructor(private linkListService: LinkListService, private http: HttpClient) {
@@ -39,11 +25,6 @@ export class LinkListComponent implements OnInit {
             .set('Accept', 'application/json');
 
         this.http.post<any>(url, {}, { headers }).subscribe({
-            /*
-            next: (flights) => {
-                console.log(flights);
-            },
-            */
             error: (err) => {
                 console.log('Error', err);
             }
@@ -52,7 +33,7 @@ export class LinkListComponent implements OnInit {
         event.srcElement.classList.add("isRead");
         return true;
     }
-    
+
     reload(): void {
         this.links$ = this.linkListService.getLinks();
     }

@@ -1,27 +1,8 @@
-<!--<div class="row">
-    <ul>
-        <li *ngFor="let link of links">
-            <span>{{link.link}}</span> - <small>{{link.link}}</small>
-        </li>
-    </ul>
-</div>-->
 <div class="card card-nav-tabs text-center" *ngFor="let link of links$ | async">
-    <!--
-    <div class="card-header card-header-primary">
-        <button class="btn btn-primary btn-fab btn-icon btn-round" [class.btn-outline-primary]="link.favorite === 0">
-            <i class="fa fa-heart"></i>
-        </button>
-    </div>
-    -->
     <div class="card-body">
         
         <p *ngIf="link.read_at == null" class="card-text"><a href="{{link.link}}" class="card-link" (click)="markAsRead(link.id, $event)" target="_blank">{{link.link}}</a></p>
         <p *ngIf="link.read_at != null" class="card-text"><a href="{{link.link}}" class="card-link isRead" target="_blank">{{link.link}}</a></p>
-        <!--
-        <p class="card-text"><a href="{{link.link}}" class="card-link" [ngClass]="{'isRead bla': !link.read_at}" (click)="markAsRead(link.id, $event)" target="_blank">{{link.link}}</a></p>
-        -->
-        <!--<a *ngIf="link.read_at == null" href="#" class="btn btn-primary btn-link">als gelesen markieren</a>-->
-        <!--<p *ngIf="link.read_at != null" class="card-text"><i class="nc-icon nc-check-2"></i> gelesen</p>-->
     </div>
     <div class="card-footer text-muted">
         hinzugefügt am {{link.created_at | date: 'dd.MM.y HH:mm:ss'}}

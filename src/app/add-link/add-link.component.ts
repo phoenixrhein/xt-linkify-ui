@@ -22,18 +22,13 @@ export class AddLinkComponent implements OnInit {
         var params = { link: this.link };
 
         this.http.post<any>(url, params, { headers }).subscribe({
-            /*
-            next: (flights) => {
-                console.log(flights);
-            },
-            */
             error: (err) => {
                 console.log('Error', err);
             },
-            complete: () => { 
+            complete: () => {
                 this.link = '';
                 this.myEvent.emit(null)
-                
+
             }
         });
     }

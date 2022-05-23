@@ -28,7 +28,7 @@
                         ],
                         "styles": [
                             "node_modules/@angular-architects/paper-design/assets/css/bootstrap.css",
-                            "node_modules/@angular-architects/paper-design/assets/scss/paper-dashboard.scss",
+                            "src/assets/paper-design/scss/custom.scss",
                             "src/styles.css"
                         ],
                         "scripts": []
